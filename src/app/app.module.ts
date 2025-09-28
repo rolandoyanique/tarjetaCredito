@@ -4,6 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { CrearTarjetaComponent } from './components/crear-tarjeta/crear-tarjeta.component';
 import { ListarTarjetaComponent } from './components/listar-tarjeta/listar-tarjeta.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from './environments/environment';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { ListarTarjetaComponent } from './components/listar-tarjeta/listar-tarje
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFirestoreModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
