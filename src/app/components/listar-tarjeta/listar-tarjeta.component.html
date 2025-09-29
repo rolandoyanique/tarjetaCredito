@@ -3,10 +3,10 @@
         <h5 class="titulo">LISTAR TARJETA</h5>
         <table class="table">
             <tbody>
-                <tr>
-                    <td>Tomas Garcia</td>
-                    <td>1234123412341234</td>
-                    <td>12/25</td>
+                <tr *ngFor="let tarjeta of listadoTarjetas">
+                    <td>{{tarjeta.titular}}</td>
+                    <td>{{tarjeta.numeroTarjeta}}</td>
+                    <td>{{tarjeta.cvv}}</td>
                     <td><i class="far fa-edit text-info"></i>
                     <i class="far fa-trash-alt text-danger"></i></td>
                 </tr>

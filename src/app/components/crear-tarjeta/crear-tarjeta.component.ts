@@ -11,6 +11,7 @@ import { TarjetaService } from 'src/app/services/tarjeta.service';
 })
 export class CrearTarjetaComponent {
   form:FormGroup;
+  loading:boolean=false;
   constructor(private fb:FormBuilder,private _tarjetaService:TarjetaService,private toastr: ToastrService){
     this.form=this.fb.group({ 
       titular:['',Validators.required], 
@@ -20,6 +21,7 @@ export class CrearTarjetaComponent {
     })
   }
 crearTarjeta(){
+  this.loading=true;
   const TARJETA:TarjetaCredito={
     titular:this.form.value.titular,
     numeroTarjeta:this.form.value.numeroTarjeta,
@@ -28,14 +30,13 @@ crearTarjeta(){
     fechaCreacion:new Date(),
     fechaActualizacion:new Date()
   }
-  //console.log(TARJETA);
-  this._tarjetaService.guardarTarjeta(TARJETA).then(()=>{
-    console.log("Tarjeta Registrada");
+  this._tarjetaService.guardarTarjeta(TARJETA).then(()=>{    
     this.toastr.success('La tarjeta fue registrada con exito!', 'Tarjeta Registrada');
     this.form.reset();
+    this.loading=false;
   },error=>{
-    this.toastr.error('Opss ocurrio un error','error');
-    console.log(error);
+    this.toastr.error('Opss ocurrio un error',error);
+    this.loading=false;
   });
 }
 }
