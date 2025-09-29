@@ -7,6 +7,9 @@ import { ListarTarjetaComponent } from './components/listar-tarjeta/listar-tarje
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from './environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { environment } from './environments/environment';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase), 
-    AngularFirestoreModule 
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
   ],
   providers: [],
   bootstrap: [AppComponent]
