@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TarjetaCredito } from 'src/app/models/TarjetaCredito';
@@ -9,7 +9,7 @@ import { TarjetaService } from 'src/app/services/tarjeta.service';
   templateUrl: './crear-tarjeta.component.html',
   styleUrls: ['./crear-tarjeta.component.css']
 })
-export class CrearTarjetaComponent {
+export class CrearTarjetaComponent implements OnInit{
   form:FormGroup;
   loading:boolean=false;
   constructor(private fb:FormBuilder,private _tarjetaService:TarjetaService,private toastr: ToastrService){
@@ -18,6 +18,11 @@ export class CrearTarjetaComponent {
       numeroTarjeta:['', [Validators.required,Validators.minLength(16),Validators.maxLength(16)]], 
       fechaExpiracion:['', [Validators.required,Validators.minLength(5),Validators.maxLength(5)]], 
       cvv:['',[Validators.required,Validators.minLength(3),Validators.maxLength(3)]] 
+    })
+  }
+  ngOnInit(): void {
+    this._tarjetaService.getTarjetaEdit().subscribe(data=>{
+      console.log(data);
     })
   }
 crearTarjeta(){

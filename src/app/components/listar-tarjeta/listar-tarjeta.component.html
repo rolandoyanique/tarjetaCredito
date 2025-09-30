@@ -7,8 +7,8 @@
                     <td>{{tarjeta.titular}}</td>
                     <td>{{tarjeta.numeroTarjeta}}</td>
                     <td>{{tarjeta.cvv}}</td>
-                    <td><i class="far fa-edit text-info"></i>
-                    <i class="far fa-trash-alt text-danger"></i></td>
+                    <td><i class="far fa-edit text-info" (click)="editarTarjeta(tarjeta)"></i>
+                    <i class="far fa-trash-alt text-danger" (click)="eliminarTarjeta(tarjeta.id)"></i></td>
                 </tr>
             </tbody>
         </table>
