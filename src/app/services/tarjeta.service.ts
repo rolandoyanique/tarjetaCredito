@@ -25,4 +25,8 @@ export class TarjetaService {
   getTarjetaEdit():Observable<TarjetaCredito>{
     return this.tarjeta$.asObservable();
   }
+  editarTarjeta(id:string,tarjeta:any):Promise<any>{
+    return this.firestore.collection('tarjetas').doc(id).update(tarjeta);
+
+  }
 }
